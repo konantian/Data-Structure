@@ -65,7 +65,7 @@ class CircularQueue:
             str_exp +=str(self.__items[i])+" "
             i=(i+1)%self.__capacity
         return str_exp.strip()+"]"
-#Returns a string representationof the object CircularQueue
+#Returns a string representation of the object CircularQueue
     def __repr__(self):
         return str(self.__items)+" H="+str(self.__head)+" T="+str(self.__tail)+"("+str(self.__count)+"/"+str(self.__capacity)+")"
 

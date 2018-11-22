@@ -78,7 +78,7 @@ class SLinked_List:
 
         self.__size +=1
     
-   #search the indeicated item  and return the number of occupance
+   #search the indicated item  and return the number of occupancy
     def search(self, item):
         current = self.head
         found=False
@@ -148,7 +148,7 @@ class SLinked_List:
                 previous=current
                 current=current.getNext()
         if found==False:
-            raise Exception('This item does not exsit! ')
+            raise Exception('This item does not exist! ')
 
     #remove all nodes that has same value with item
     def removeAll(self,item):
@@ -168,7 +168,7 @@ class SLinked_List:
                 previous=current
                 current=current.getNext()
         if found==False:
-            raise Exception('This item does not exsit! ')
+            raise Exception('This item does not exist! ')
             
     #return a copy of the list starting at the start position and going up to but not including the stop position        
     def slice(self,start,stop):

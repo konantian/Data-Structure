@@ -318,7 +318,7 @@ class BST:
 
 			return lheight+1 if lheight > rheight else rheight+1
 
-	#Print the tree inorder, recursively,Time complexity:O(n)
+	#Print the tree in order, recursively,Time complexity:O(n)
 	def printInorder(self,node=False):
 		node = self.root if node == False else node
 
@@ -327,7 +327,7 @@ class BST:
 			print(node.value,end=' ')
 			self.printInorder(node.right)
 
-	#Print the tree inorder, iteratively,Time complexity:O(n)
+	#Print the tree in order, iteratively,Time complexity:O(n)
 	def printinorder(self):
 		
 		root=self.root
