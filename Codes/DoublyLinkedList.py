@@ -215,6 +215,42 @@ class Doubly_Linked_List:
             output.append(current.data)
             current = current.previous
         return "<-".join(output)
+
+    # swap the head and tail nodes
+    def swapHeadTail(self):
+
+        new_head = self.tail
+        new_tail = self.head
+
+        current = self.head
+        while current.next != self.tail:
+            current = penu.next
+
+        self.tail.next = self.head.next
+        self.head.next = None
+        current.next = self.head
+        self.head, self.tail = self.tail, self.head
+
+    # swap the content of two nodes given two indexes
+    def swap(self,pos1,pos2):
+
+        index = 0
+        current = self.head
+        first = None
+        second = None
+        while current != None:
+            if index == pos1:
+                first = current
+            if index == pos2:
+                second = current
+
+            index += 1
+            current = current.next
+
+        temp = first.getData()
+        first.setData(second.getData())
+        second.setData(temp)
+
                  
                  
                  

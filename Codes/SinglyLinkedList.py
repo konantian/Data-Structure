@@ -212,9 +212,4 @@ class SLinked_List:
             output.append(current.data)
             current = current.next
         output=[str(i) for i in output]
-        return "->".join(output)     
-           
-   
-                 
-                 
-                 
+        return "->".join(output)

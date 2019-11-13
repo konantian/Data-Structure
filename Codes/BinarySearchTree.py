@@ -113,9 +113,9 @@ class BST:
 
 		left=self.getHeight(self.root.left)
 		right=self.getHeight(self.root.right)
-		if abs(left-right) > 1:
-			return False
-		return True
+		if abs(left-right) <= 1 and self.isBalanced(self.root.left) and self.isBalanced(self.root.right):
+			return True
+		return False
 
 	#Determine if the tree is perfect
 	def isPerfect(self):
@@ -223,7 +223,6 @@ class BST:
 	#Largest element in the tree does not have successor
 	def successor(self,key):
 		node=self.find(key)
-
 
 		#The key given does not exist
 		if node == False:
