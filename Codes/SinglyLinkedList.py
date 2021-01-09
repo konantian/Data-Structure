@@ -226,6 +226,25 @@ class SLinked_List:
                 checker = checker | (1 << data)
             current = current.getNext()
             
+    #return the kth to last element
+    def returnKthToLast(self, k):
+        if not self.head: return None
+        
+        fast = self.head
+        for _ in range(k):
+            fast = fast.getNext()
+
+        slow = self.head
+        while fast != None:
+            fast = fast.getNext()
+            slow = slow.getNext()
+        return slow
+    
+    def deleteMiddleNode(self, node):
+
+        node.setData(node.getNext().getData())
+        node.setNext(node.getNext().getNext())
+        
     # returns the size of the linked list
     def size(self):
         
