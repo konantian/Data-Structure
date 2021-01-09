@@ -193,6 +193,38 @@ class SLinked_List:
             previous=current
             current=next_node
         self.head=previous
+
+    #remove duplicate elements in list
+    def removeDuplicates(self):
+        unique = set()
+        current = self.head
+        previous = None
+        while current != None:
+            data = current.getData()
+            if data not in unique:
+                unique.add(data)
+                previous = current
+            else:
+                previous.setNext(current.getNext())
+                self.__size-=1
+            current = current.getNext()
+
+    #remove duplicate elements in list without temporary buffer
+    #only applicable if all the elements in the list are non-negative integers
+    def removeDuplicates2(self):
+        current = self.head
+        checker = 0
+        previous = None
+        while current != None:
+            data = current.getData()
+            value = checker & (1 << data)
+            if value > 0:
+                previous.setNext(current.getNext())
+                self.__size-=1
+            else:
+                previous = current
+                checker = checker | (1 << data)
+            current = current.getNext()
             
     # returns the size of the linked list
     def size(self):
