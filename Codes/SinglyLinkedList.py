@@ -240,11 +240,38 @@ class SLinked_List:
             slow = slow.getNext()
         return slow
     
+    #remove the kth to last element
+    def removeKthToLast(self, k):
+        node = self.returnKthToLast(k)
+        self.deleteNode(node)
+        
+    def deleteNode(self, node):
+        current = self.head
+        while current and current.getNext() != node:
+            current = current.getNext()
+        if node.getNext():
+            node.setData(node.getNext().getData())
+            node.setNext(node.getNext().getNext())
+        else:
+            current.setNext(None)
+    
+    #given a node, delete this node from the list
     def deleteMiddleNode(self, node):
 
         node.setData(node.getNext().getData())
         node.setNext(node.getNext().getNext())
+        self.__size -= 1
+    
+    #return the middle node of the list
+    #if there are two middle nodes, return the second one
+    def returnMiddleNode(self):
         
+        slow, fast = self.head, self.head.next
+        while fast:
+            slow = slow.getNext()
+            fast = fast.getNext().getNext()
+        return slow
+    
     # returns the size of the linked list
     def size(self):
         
