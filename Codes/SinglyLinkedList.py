@@ -266,11 +266,21 @@ class SLinked_List:
     #if there are two middle nodes, return the second one
     def returnMiddleNode(self):
         
-        slow, fast = self.head, self.head.next
-        while fast:
+        slow = fast = self.head
+        while fast and fast.getNext():
             slow = slow.getNext()
             fast = fast.getNext().getNext()
         return slow
+    
+    #detect if there is cycle in the linked list
+    def loopDetection(self):
+        slow, fast = self.head, self.head
+        while fast and fast.getNext():
+            slow = slow.getNext()
+            fast = fast.getNext().getNext()
+            if slow == fast:
+                return slow
+        return False
     
     # returns the size of the linked list
     def size(self):

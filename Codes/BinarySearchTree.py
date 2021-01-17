@@ -22,7 +22,9 @@ class BST:
 
 	def getRoot(self):
 
-		return self.root.value
+		if self.root:
+			return self.root
+		return None
 
 	#Given a key, insert a node to the tree,Time complexity:O(h)
 	def insert(self,val,node=False):
@@ -107,15 +109,18 @@ class BST:
 		return result
 
 	#Determine if the tree is balanced
-	def isBalanced(self):
-		if not self.root:
-			return True
-
-		left=self.getHeight(self.root.left)
-		right=self.getHeight(self.root.right)
-		if abs(left-right) <= 1 and self.isBalanced(self.root.left) and self.isBalanced(self.root.right):
-			return True
-		return False
+	def isBalanced(self, root):
+            
+		def check(root):
+			if root is None:
+				return 0
+			left  = check(root.left)
+			right = check(root.right)
+			if left == -1 or right == -1 or abs(left - right) > 1:
+				return -1
+			return 1 + max(left, right)
+            
+		return check(root)
 
 	#Determine if the tree is perfect
 	def isPerfect(self):
@@ -305,17 +310,12 @@ class BST:
 					return self.getParent(key,node.right,node)
 
 	#Get the height of this tree,,Time complexity:O(n)
-	def getHeight(self,node=False):
+	def getHeight(self,node):
 
-		node = self.root if node == False else node
-
-		if node is None:
+		if not node:
 			return 0
-		else:
-			lheight=self.getHeight(node.left)
-			rheight=self.getHeight(node.right)
 
-			return lheight+1 if lheight > rheight else rheight+1
+		return max(self.getHeight(node.left),self.getHeight(node.right)) + 1
 
 	#Print the tree in order, recursively,Time complexity:O(n)
 	def printInorder(self,node=False):
